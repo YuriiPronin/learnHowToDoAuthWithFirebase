@@ -1,8 +1,12 @@
-import { React, createContext, useContext, useEffect, useState } from 'react';
+import {
+  React, createContext, useContext,
+  // useEffect,
+  useState
+} from 'react';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
+  // onAuthStateChanged,
   signOut,
   GoogleAuthProvider,
   signInWithPopup,
@@ -15,6 +19,7 @@ export const userAuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export function UserAuthContextProvider ({ children }) {
+  // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState({});
 
   function logIn (email, password) {
@@ -40,17 +45,6 @@ export function UserAuthContextProvider ({ children }) {
     recaptchaVerifier.render();
     return signInWithPhoneNumber(auth, number, recaptchaVerifier);
   }
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      console.log('Auth', currentuser);
-      setUser(currentuser);
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
 
   return (
     <userAuthContext.Provider

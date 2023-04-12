@@ -92,3 +92,10 @@
   display: flex;
   flex-direction: column;
 }
+
+.userList {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 20px;
+}

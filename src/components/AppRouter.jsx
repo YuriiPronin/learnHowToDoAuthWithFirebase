@@ -1,14 +1,13 @@
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { privateRoutes, publicRoutes } from '../routes';
-import { MAIN_ROUTE, LOGIN_ROUTE, EMAIL_ROUTE } from '../utils/consts';
+import { MAIN_ROUTE, LOGIN_ROUTE, EMAIL_ROUTE, USER_ROLES } from '../utils/consts';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../index';
 
 export const AppRouter = () => {
   const [user] = useAuthState(auth);
 
-  console.log('user is', user);
   return user
     ? (
       <>
@@ -17,6 +16,7 @@ export const AppRouter = () => {
             <Route key={path} path={path} element={<Component />} end={true} />
           )}
           <Route path="/*" element={<Navigate to={MAIN_ROUTE} replace={true} />} />
+          <Route path='/*' element={<Navigate to={USER_ROLES} replace={true}/>}/>
         </Routes>
 
       </>

@@ -13,10 +13,10 @@ export const EmailSingIn = () => {
     e.preventDefault();
     createUserWithEmailAndPassword(
       auth,
-      emailRef.current.value,
-      passwordRef.current.value
+      emailRef?.current?.value,
+      passwordRef?.current?.value
     ).then(user => {
-      console.log(user);
+      return user;
     }).catch(err => {
       console.log(err);
     });
@@ -27,10 +27,10 @@ export const EmailSingIn = () => {
     e.preventDefault();
     signInWithEmailAndPassword(
       auth,
-      emailRef.current.value,
-      passwordRef.current.value
+      emailRef?.current?.value,
+      passwordRef?.current?.value
     ).then(user => {
-      console.log('user is', user);
+      return user;
     }).catch(err => {
       console.log(err);
     });

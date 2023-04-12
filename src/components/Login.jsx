@@ -10,8 +10,8 @@ import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 
 export const Login = () => {
+  // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState(null);
-  console.log(user);
 
   const loginGoogle = async () => {
     try {
